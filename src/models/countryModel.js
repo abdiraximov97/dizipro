@@ -1,11 +1,9 @@
-const Joi = require("joi");
-
 module.exports = async (sequelize, Sequelize, CustomError) => {
     return await sequelize.define("countries", {
         country_id: {
             type: Sequelize.INTEGER,
-            allowNull: false,
-            autoIncrement: true,
+			autoIncrement: true,
+			primaryKey: true,
         },
 
         country_name: {
