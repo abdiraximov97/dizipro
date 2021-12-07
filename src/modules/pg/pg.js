@@ -2,6 +2,7 @@ const { Sequelize } = require("sequelize");
 const { sequelizeJoi, Joi } = require("sequelize-joi");
 const countryModel = require("../../models/countryModel");
 const init = require("./init");
+const {CustomError} = require("../../helpers/customError")
 
 if(!process.env.PG_CONNECT_URL) {
     throw new Error("PG CONNECTION STRING NOT FOUND");
@@ -15,7 +16,7 @@ module.exports = async function pg() {
     try {
         await sequelize.authenticate();
         let db = {};
-        db.countries = await countryModel(sequelize, Sequelize);
+        db.countries = await countryModel(sequelize, Sequelize, CustomError);
         await init(db);
         await sequelize.sync({
             force: true
