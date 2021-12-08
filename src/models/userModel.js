@@ -1,4 +1,4 @@
-module.exports = async (sequelize, Sequelize, CustomError) => {
+module.exports = async (sequelize, Sequelize, Joi, CustomError) => {
     return await sequelize.define("users", {
         user_id: {
             type: Sequelize.UUID,

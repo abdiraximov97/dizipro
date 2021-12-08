@@ -1,7 +1,7 @@
 const { Sequelize } = require("sequelize");
+const init = require("./init");
 const { sequelizeJoi, Joi } = require("sequelize-joi");
 const countryModel = require("../../models/countryModel");
-const init = require("./init");
 const {CustomError} = require("../../helpers/customError");
 const userModel = require("../../models/userModel");
 const relation = require("../../models/relation");
@@ -13,6 +13,8 @@ if(!process.env.PG_CONNECT_URL) {
 const sequelize = new Sequelize(process.env.PG_CONNECT_URL, {
     logging: false,
 });
+
+sequelizeJoi(sequelize);
 
 module.exports = async function pg() {
     try {
