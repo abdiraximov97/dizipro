@@ -22,7 +22,7 @@ async function server() {
             next();
         });
         app.use(customErrorMiddliware);
-        app.use("v1", Routes);
+        app.use("/v1", Routes);
         app.use(errorHandlerMiddleware)
     } catch (error) {
         console.log("SERVER ERROR:", error);

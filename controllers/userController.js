@@ -10,6 +10,10 @@ module.exports = class UserController {
 
 			console.log(user);
 		} catch (error) {
+			if(error?.message.startsWith("notNull Violation")) {
+				error.code = 400;
+				error.message = "Country is invalid";
+			}
 			console.log(error + "");
 			next(error);
 		}
