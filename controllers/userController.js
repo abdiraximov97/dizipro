@@ -1,8 +1,16 @@
+const { generateCrypt } = require("../modules/bcrypt");
+
 module.exports = class UserController {
 	static async UserCreateAccountPostController(req, res, next) {
 		try {
-			// const user = await req.db.users.create
+			const user = await req.db.users.create({
+				...req.body,
+				user_password: generateCrypt(req?.body?.user_password)
+			});
+
+			console.log(user);
 		} catch (error) {
+			console.log(error + "");
 			next(error);
 		}
 	}
