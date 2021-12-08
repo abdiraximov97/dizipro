@@ -1,9 +1,9 @@
 require("dotenv").config();
 const express = require("express");
-const Routes = require("./src/routes");
-const { customErrorMiddliware } = require("./src/middlewares/customErrorMiddleware");
+const Routes = require("./routes");
+const { customErrorMiddliware } = require("./middlewares/customErrorMiddleware");
 const app = express();
-const pg = require("./src/modules/pg/pg");
+const pg = require("./modules/pg/pg");
 const port = process.env.port || 8080;
 
 async function server() {
