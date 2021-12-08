@@ -24,7 +24,7 @@ module.exports = async function pg() {
         db.users = await userModel(sequelize, Sequelize, Joi, CustomError);
         await relation(db);
         await sequelize.sync({
-            force: true
+            force: false,
         });
         await init(db);
         return db;
